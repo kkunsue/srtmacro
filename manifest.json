@@ -1,10 +1,10 @@
 {
   "manifest_version": 2,
-  "name": "SRT Macro",
-  "description": "SRT 자동 예약 매크로",
-  "version": "1.0.1",
+  "name": "민족 반역 도우미",
+  "description": "Bandai Macro",
+  "version": "1.0.0",
   "permissions": [
-    "https://etk.srail.co.kr/"
+    "https://www.bandaimall.co.kr/"
   ],
   "icons": {
       "128": "images/icon128.png"
@@ -12,17 +12,13 @@
   "content_scripts": [ {
     "all_frames": true,
     "js": ["jquery-1.11.0.min.js", "content.js"],
-    "matches": ["https://etk.srail.co.kr/*"],
+    "matches": ["https://www.bandaimall.co.kr/*"],
     "run_at": "document_end"
   }],
   "background": {
     "page": "background.html"
   },
   "web_accessible_resources": [
-    "inject.js", "images/btn_start.png", "images/btn_stop.png", "assets/tada.mp3"
-  ],
-  "options_ui": {
-    "page": "options.html",
-	"chrome_style": true
-  }
+    "images/btn_start.png", "images/btn_stop.png", "assets/tada.mp3"
+  ]
 }
