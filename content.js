@@ -4,7 +4,7 @@ function injectJs(srcFile) {
     document.getElementsByTagName('head')[0].appendChild(scr);
 }
 
-var dsturl1 = "https://etk.srail.co.kr/hpg/hra/01/selectScheduleList.do?pageId=TK0101010000";
+var dsturl1 = "https://etk.srail.kr/hpg/hra/01/selectScheduleList.do?pageId=TK0101010000";
 
 if (document.URL.substring(0, dsturl1.length) == dsturl1) {
 
@@ -79,7 +79,7 @@ if (document.URL.substring(0, dsturl1.length) == dsturl1) {
 						if (coachSpecials.length != 0) {
 							for (j = 0; j < coachSpecials.length; j++) {
 								name = $(coachSpecials[j]).attr('class');
-								if (name == 'button button-02') {
+								if (name == 'btn_small btn_burgundy_dark val_m wx90') {
 									$(coachSpecials[0])[0].click();
 									succeed = true;
 									break;
@@ -94,7 +94,7 @@ if (document.URL.substring(0, dsturl1.length) == dsturl1) {
 						if (firstSpecials.length != 0) {
 							for (j = 0; j < firstSpecials.length; j++) {
 								name = $(firstSpecials[j]).attr('class');
-								if (name == 'button button-02') {
+								if (name == 'btn_small btn_burgundy_dark val_m wx90') {
 									$(firstSpecials[0])[0].click();
 									succeed = true;
 									break;
