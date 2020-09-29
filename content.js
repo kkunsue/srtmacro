@@ -137,6 +137,7 @@ if (document.URL.substring(0, dsturl1.length) == dsturl1) {
 					sessionStorage.removeItem('macro');
 					sessionStorage.removeItem('coachSelected');
 					sessionStorage.removeItem('firstSelected');
+					sessionStorage.removeItem('waitingSelected');
 					sessionStorage.removeItem('psgInfoPerPrnb1');
 					sessionStorage.removeItem('psgInfoPerPrnb5');
 					sessionStorage.removeItem('psgInfoPerPrnb4');
