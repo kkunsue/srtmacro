@@ -13,10 +13,14 @@ if (document.URL.substring(0, dsturl1.length) == dsturl1) {
 
 		var coachSelected = JSON.parse(sessionStorage.getItem('coachSelected'));
 		var firstSelected = JSON.parse(sessionStorage.getItem('firstSelected'));
+		var waitingSelected = JSON.parse(sessionStorage.getItem('waitingSelected'))
 		if (coachSelected == null) coachSelected = [];
 		if (firstSelected == null) firstSelected = [];
-		console.log("coach:" + coachSelected);
-		console.log("first:" + firstSelected);
+		if (waitingSelected == null) waitingSelected = [];
+
+		console.log("coach", coachSelected);
+		console.log("first", firstSelected);
+		console.log("waiting", waitingSelected);
 
 		if (sessionStorage.getItem('macro') == "true") {
 			$(".quickmenu").append('<a href="#" onclick="macrostop();" style="margin-left:5px;"><img src="' + chrome.extension.getURL('images/btn_stop.png') + '"></a>');
@@ -39,6 +43,14 @@ if (document.URL.substring(0, dsturl1.length) == dsturl1) {
 				var columns = $(rows[i]).children('td');
 				var first = $(columns[5]);
 				var coach = $(columns[6]);
+				var waiting = $(columns[7]);
+
+				if (waiting.children().length > 0) {
+					waiting.append($("<p class='p5'></p>"));
+					var checkbox = $("<label></label>").html('<input type="checkbox" name="checkbox" class="waitingMacro" value="' + i + '"> 매크로');
+					checkbox.children('input').prop('checked', waitingSelected.indexOf(i+"") > -1);
+					waiting.append(checkbox);
+				}
 				if (coach.children().length > 0) {
 					coach.append($("<p class='p5'></p>"));
 					var checkbox = $("<label></label>").html('<input type="checkbox" name="checkbox" class="coachMacro" value="' + i + '"> 매크로');
@@ -73,6 +85,22 @@ if (document.URL.substring(0, dsturl1.length) == dsturl1) {
 
 					var first = $(columns[5]);
 					var coach = $(columns[6]);
+					var waiting = $(columns[7]);
+
+					if (waitingSelected.indexOf(i+"") > -1) {
+						var waitingSpecials = waiting.children("a");
+						if (waitingSpecials.length != 0) {
+							for (j = 0; j < waitingSpecials.length; j++) {
+								name = $(waitingSpecials[j]).attr('class');
+								if (name == 'btn_small btn_burgundy_dark val_m wx90') {
+									$(waitingSpecials[0])[0].click();
+									succeed = true;
+									break;
+								}
+							}
+							if (succeed == true) break;
+						}
+					}
 
 					if (coachSelected.indexOf(i+"") > -1) {
 						var coachSpecials = coach.children("a");
